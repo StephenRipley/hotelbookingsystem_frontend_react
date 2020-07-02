@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+After pulling down, you may need to run npm install to ensure you have all the required content to run the app.
+
+Just open the terminal window and cd into the project folder.
+Then type npm install
+This will take a couple minutes to complete, but after you should be good to go.
+
 ## Available Scripts
 
 In the project directory, you can run:
