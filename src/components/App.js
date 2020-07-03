@@ -14,7 +14,7 @@ class App extends Component {
       <div className="container-fluid">
         <div className="nav-wrapper indigo lighten-4">
               <h1>Hotels Booking System</h1>
-            </div>
+        </div>
         <div className="row">
           <div className="col s8">
             <Hotels />

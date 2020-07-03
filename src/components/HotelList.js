@@ -1,9 +1,8 @@
 import React from 'react';
 
 const HotelList = ({hotel}) => (
-  <div className="col s4">
+  <div className="col s12">
     <div className="card">
-
       <div className="card-content">
         <p>{hotel.hotelName}</p>
         <p>{hotel.city}</p>

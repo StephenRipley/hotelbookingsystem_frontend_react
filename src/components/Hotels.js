@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import HotelList from './HotelList';
 import Error from './Error';
 
@@ -15,24 +16,21 @@ class Hotels extends Component {
     componentDidMount() {
         const url = "http://localhost:8088/hotelbookingsystem/admin/AllHotels";
     
-        fetch(url)
-          .then((response) => {
-            return response.json();
+        axios.get(url)
+        .then((response) => {
+          this.setState({
+            hotels: response.data
           })
-          .then((data) => {
-            this.setState({
-                hotels: data
-            })
+        })
+        .catch((error) => {
+          this.setState({
+            error: true
           })
-          .catch((error) => {
-            this.setState({
-              error: true
-            })
-          });
+        });
       }
 
     renderItems() {
-        if (!this.state.error) {
+        if(!this.state.error) {
           return this.state.hotels.map((hotel) => (
             <HotelList key={hotel.hotelId} hotel={hotel} />
           ));
