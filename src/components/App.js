@@ -9,11 +9,12 @@ class App extends Component {
     };
   }
 
+
   render() {
     return (
       <div className="container-fluid">
         <div className="nav-wrapper indigo lighten-4">
-              <h1>Hotels Booking System</h1>
+              <h1>Hotel Booking System</h1>
         </div>
         <div className="row">
           <div className="col s8">
@@ -26,21 +27,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <p>Hotel Booking</p>
-//       </header>
-//       <div>
-//         <Hotels />
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default App;

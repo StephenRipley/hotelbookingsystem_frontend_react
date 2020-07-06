@@ -1,9 +1,25 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import Enzyme, { shallow } from 'enzyme';
+import { render, within } from '@testing-library/react';
 import App from './App';
+//import Hotels from './Hotels';
+import Adapter from 'enzyme-adapter-react-16';
 
-test('renders learn react link', () => {
+Enzyme.configure({ adapter: new Adapter() });
+
+test('renders Hotel Booking System in header', () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
+  const linkElement = getByText(/Hotel Booking System/i);
   expect(linkElement).toBeInTheDocument();
 });
+
+test('That there is a h1 on app component', () => {
+  const h1 = shallow(<App />);
+  expect(h1.exists()).toBe(true);
+});
+
+test('App component renders', () => {
+  const wrapper = shallow(<App />);
+  expect(wrapper.exists()).toBe(true);
+});
+

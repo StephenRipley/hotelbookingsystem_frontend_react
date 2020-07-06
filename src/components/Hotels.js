@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ReactPaginate from 'react-paginate'
 import axios from 'axios';
+import ReactPaginate from 'react-paginate';
 import HotelList from './HotelList';
 import Error from './Error';
 
