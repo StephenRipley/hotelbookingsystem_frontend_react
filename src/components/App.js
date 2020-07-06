@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Hotels from './Hotels';
+import Login from './Login';
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +19,8 @@ class App extends Component {
         </div>
         <div className="row">
           <div className="col s8">
-            <Hotels />
+            <Login/>
+            <Hotels/>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ const HotelList = ({hotel}) => (
         <p>Star rating: {hotel.starRating}</p>
       </div>
       <div className="card-action">
-        <a href={`http://localhost:8088/hotelbookingsystem/hotel/SeeHotelById/${hotel.hotelId}`} target="_blank">Visit this lovely hotel</a>
+        <a href={`http://localhost:8088/hotelbookingsystem/hotel/SeeHotelById/${hotel.hotelId}`}>Visit this lovely hotel</a>
       </div>
     </div>
   </div>
