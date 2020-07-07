@@ -1,6 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 
 //const hotelList = createContext();
+=======
+>>>>>>> 50b941d6655a4f857187975594136a44e619ca14
 
 const HotelList = ({hotel}) => (
   <div className="col s12">
