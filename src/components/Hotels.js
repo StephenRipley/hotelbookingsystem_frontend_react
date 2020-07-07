@@ -28,11 +28,11 @@ export class Hotels extends Component {
           const postData = slice.map((hotel) => <React.Fragment>
             <HotelList key={hotel.hotelId} hotel={hotel} /></React.Fragment>)
 
-          this.setState({
-            pageCount: Math.ceil(hotels.length / this.state.perPage),
+          // this.setState({
+          //   pageCount: Math.ceil(hotels.length / this.state.perPage),
 
-            postData
-          })
+          //   postData
+          // })
         });
         
       }

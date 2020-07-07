@@ -21,4 +21,4 @@ const HotelList = ({hotel}) => (
   </div>
 );
 
-export default { HotelList, hotelList } ;
+export default HotelList;
