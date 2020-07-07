@@ -37,10 +37,6 @@
   "devDependencies": {
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-<<<<<<< HEAD
-    "flow-bin": "^0.128.0"
-=======
     "jest": "^26.1.0"
->>>>>>> d0ec7891f3e92dce5396733a8803c69966ca0cad
   }
 }
