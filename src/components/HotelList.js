@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { createContext } from 'react';
+
+const hotelList = createContext();
 
 const HotelList = ({hotel}) => (
   <div className="col s12">
@@ -19,4 +21,4 @@ const HotelList = ({hotel}) => (
   </div>
 );
 
-export default HotelList;
+export default { HotelList, hotelList } ;

@@ -4,13 +4,12 @@ import ReactPaginate from 'react-paginate';
 import HotelList from './HotelList';
 //import Error from './Error';
 
-class Hotels extends Component {
+export class Hotels extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             offset: 0,
-            hotels: [],
             perPage: 5,
             currentPage: 0,
             error: false,
@@ -46,6 +45,14 @@ class Hotels extends Component {
           offset: offset
         }, () => {
           this.recievedData()
+        });
+      };
+
+      changePagination = (e) =>{
+        const size = e.selected;
+
+        this.setState({
+          perPage: size
         });
       };
     

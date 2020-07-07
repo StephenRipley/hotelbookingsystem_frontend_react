@@ -6,6 +6,20 @@ Just open the terminal window and cd into the project folder.
 Then type npm install
 This will take a couple minutes to complete, but after you should be good to go.
 
+Jest 
+To install jest testin framework run the following commands:
+npm install --save-dev jest 
+yarn add --dev jest
+
+if doing shallow component testing you will also need Enzyme run the following command:
+npm i -D enzyme enzyme-adapter-react-16
+yarn add --dev enzyme enzyme-adapter-react-16
+
+when running tests, enzyme requires an adapter. Make sure you have the following import and configurer
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
+
 ## Available Scripts
 
 In the project directory, you can run:

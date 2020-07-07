@@ -1,8 +1,7 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
-import { render, within } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import App from './App';
-//import Hotels from './Hotels';
 import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
