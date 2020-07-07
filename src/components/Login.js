@@ -21,8 +21,9 @@ class Login extends Component {
         this.setState({password: event.target.value});
     }
 
-    handleSubmit() {
-        const url = "http://localhost:8088/hotelbookingsystem/Login/LoginUser";
+    handleSubmit(event) {
+        event.preventDefault();
+        const url = "http://localhost:8088/hotelbookingsystem/login/LoginUser";
 
         axios.post(url, {
             username: this.state.username,
