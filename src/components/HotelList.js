@@ -21,4 +21,8 @@ const HotelList = ({hotel}) => (
   </div>
 );
 
+<<<<<<< HEAD
 export default HotelList ;
+=======
+export default HotelList;
+>>>>>>> d0ec7891f3e92dce5396733a8803c69966ca0cad
