@@ -28,7 +28,9 @@ class Login extends Component {
         axios.post(url, {
         })
         .then(response => {
-                this.props.history.push("/hotels")
+                this.props.history.push("/hotels");
+                console.log(response);
+                localStorage.setItem('username', response.data.username);
             })
             .catch(err => {
                 this.setState({errorMessage: err.message});

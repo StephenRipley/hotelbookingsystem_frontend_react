@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import HotelList from './HotelList';
+import Login from './Login';
 //import Error from './Error';
 
 export class Hotels extends Component {
@@ -65,6 +66,7 @@ export class Hotels extends Component {
     render() {
         return (
           <div className="row">
+            <h4>Hello {localStorage.getItem('username')}!</h4>
            {this.state.postData}
            <ReactPaginate
               previousLabel={"prev"}
