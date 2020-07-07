@@ -1,6 +1,4 @@
-import React, { createContext } from 'react';
-
-const hotelList = createContext();
+import React from 'react';
 
 const HotelList = ({hotel}) => (
   <div className="col s12">

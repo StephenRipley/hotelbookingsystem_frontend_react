@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
     constructor(props) {
@@ -30,10 +31,16 @@ class Login extends Component {
             password: this.state.password
         })
         .then(response => {
-            console.log(response);
+            if(response.status === 200) {
+                this.props.history.push("/hotels");
+            } else if(response.status === 500) {
+                alert('Incorrect login, please try again');
+            }
         }
 
-        )}
+        )
+        //this.props.history.push("/hotels");
+    }
 
 render() {
     return (
