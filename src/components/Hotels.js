@@ -25,7 +25,6 @@ export class Hotels extends Component {
 
           const hotels = response.data;
           const slice = hotels.slice(this.state.offset, this.state.offset + this.state.perPage)
-          //// eslint-disable-next-line
           const postData = slice.map((hotel) => <React.Fragment>
             <HotelList key={hotel.hotelId} hotel={hotel} /></React.Fragment>)
 

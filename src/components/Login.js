@@ -23,11 +23,11 @@ class Login extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const url = "http://localhost:8088/hotelbookingsystem/login/LoginUser";
+        const url = `http://localhost:8088/hotelbookingsystem/login/LoginUser/${this.state.username}/${this.state.password}`;
 
         axios.post(url, {
-            username: this.state.username,
-            password: this.state.password
+            // username: this.state.username,
+            // password: this.state.password,
         })
         .then(response => {
             console.log(response);
@@ -47,7 +47,7 @@ render() {
             </div>
             <div>
                 <label>Password:
-                <input type="password" value={this.state.password} onChange={this.updatePassword} />
+                <input type="text" value={this.state.password} onChange={this.updatePassword} />
                 </label>
             </div>
             <div>
