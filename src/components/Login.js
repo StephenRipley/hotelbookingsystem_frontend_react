@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
     constructor(props) {
@@ -27,25 +26,21 @@ class Login extends Component {
         const url = `http://localhost:8088/hotelbookingsystem/login/LoginUser/${this.state.username}/${this.state.password}`;
 
         axios.post(url, {
-            // username: this.state.username,
-            // password: this.state.password,
         })
         .then(response => {
-            if(response.status === 200) {
-                this.props.history.push("/hotels");
-            } else if(response.status === 500) {
-                alert('Incorrect login, please try again');
-            }
+                this.props.history.push("/hotels")
+            })
+            .catch(err => {
+                this.setState({errorMessage: err.message});
+          })
         }
-
-        )
-        //this.props.history.push("/hotels");
-    }
 
 render() {
     return (
         <div>
             <h3>Login</h3>
+            { this.state.errorMessage &&
+            <p style={{color:'red'}} className="error">Login details incorrect, please try again </p> }
         <form onSubmit={this.handleSubmit}>
             <div>
                 <label>Username:
@@ -54,7 +49,7 @@ render() {
             </div>
             <div>
                 <label>Password:
-                <input type="text" value={this.state.password} onChange={this.updatePassword} />
+                <input type="password" value={this.state.password} onChange={this.updatePassword} />
                 </label>
             </div>
             <div>
