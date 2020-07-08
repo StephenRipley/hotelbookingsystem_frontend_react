@@ -19,7 +19,7 @@ describe('HotelList component', () => {
         it('contains a matching number of <div> elements', () => {
             const hotel = ['Yotel, Edinburgh, some street, EH71 7FA'];
             const hotelList = shallow(<HotelList hotel={hotel}/>);
-            expect(hotelList.find('p').length).toEqual(hotel.length);
+            expect(hotelList.find('div').length).toEqual(4);
         })
     })
 })
