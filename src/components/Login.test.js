@@ -13,18 +13,14 @@ test('that Login component renders', () => {
 describe("handleChange", () => {
     test('that setState is called on updateUsername event', () => {
         const wrapper = shallow(<Login />);
-    
         const spy = jest.spyOn(wrapper.instance(), "setState");
-    
         const mockEvent = {
             target: {
                 name: "username",
                 value: "John"
             }
         };
-    
         wrapper.instance().updateUsername(mockEvent);
-    
         expect(spy).toHaveBeenCalled();
     });
 });

@@ -83,7 +83,7 @@ render() {
                         </ul>
                 </div>
                 <div>
-                    <button class="btn" onClick={this.clearUserDetails}>Logout</button>
+                    <button className="btn" onClick={this.clearUserDetails}>Logout</button>
                 </div>
             </div>
             

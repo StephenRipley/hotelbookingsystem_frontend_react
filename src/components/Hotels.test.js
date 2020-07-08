@@ -1,10 +1,34 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
+import axios from 'axios';
+//import axiosMock from '../components/__mocks__/axios-mock';
 import Hotels from './Hotels';
 import Adapter from 'enzyme-adapter-react-16';
-import { createPortal } from 'react-dom';
 
 Enzyme.configure({ adapter: new Adapter() });
+
+//   it('should fetch a list of hotels', () => {
+//     jest.mock('axios');
+//     const getSpy = jest.spyOn(axios, 'get');
+//     const hotelsInstance = shallow(
+//       <Hotels/>
+//     );
+//     expect(getSpy).toBeCalled();
+//     expect(getSpy.mock.calls.length).toBe(1);
+//     expect(getSpy.mock.results[0].value).toBe('a list of hotels');
+//   });
+
+
+test('should fetch hotels', async () => {
+    jest.mock('axios');
+    const wrapper = shallow(<Hotels />);
+    const hotels = [{name: 'Bob'}];
+    const resp = {data: hotels};
+    axios.get.mockImplementation(() => Promise.resolve(resp))
+    //axios.get.mockResolvedValue(resp);
+    wrapper.instance().recievedData().then(data => expect(data).toEqual(hotels));
+});
+
 
 test('that Hotels component renders', () => {
     const wrapper = shallow(<Hotels />);
@@ -27,9 +51,7 @@ test('that pagination can be changed', () => {
         offset: 0,
         perPage: undefined
     };
-
     wrapper.instance().changePagination(mockEvent);
-
     expect(wrapper.state()).toEqual(expected);
 });
 });
@@ -38,9 +60,7 @@ test('that pagination can be changed', () => {
 describe("handleChange", () => {
 test('that setState is called on handleClick event', () => {
     const wrapper = shallow(<Hotels />);
-
     const spy = jest.spyOn(wrapper.instance(), "setState");
-
     const mockEvent = {
         target: {
             name: "perPage",

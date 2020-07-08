@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import HotelList from './HotelList';
-import Login from './Login';
 //import Error from './Error';
 
 export class Hotels extends Component {
