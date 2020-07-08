@@ -12,6 +12,7 @@ class Login extends Component {
         this.updateUsername = this.updateUsername.bind(this);
         this.updatePassword = this.updatePassword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.logout = this.logout.bind(this);
     }
 
     updateUsername(event) {
@@ -38,16 +39,17 @@ class Login extends Component {
           })
         }
 
-    clearUserDetails() {
+    logout() {
+        this.setState({loggedIn: false});
         localStorage.clear();
-        this.setState({username: '', password: ''})
+
     }
 
         usernameLoggedIn = localStorage.getItem('username');
 
 render() {
 
-    if (this.state.loggedIn === true) {
+    if (this.state.loggedIn === false) {
         return (
             <div>
                 <h3>Login</h3>
@@ -83,7 +85,7 @@ render() {
                         </ul>
                 </div>
                 <div>
-                    <button class="btn" onClick={this.clearUserDetails}>Logout</button>
+                    <button class="btn" onClick={this.logout}>Logout</button>
                 </div>
             </div>
             
