@@ -7,6 +7,7 @@ import Login from './Login';
 
 export class Hotels extends Component {
 
+
     constructor(props) {
         super(props);
         this.state = {
@@ -14,6 +15,7 @@ export class Hotels extends Component {
             perPage: 5,
             currentPage: 0,
             error: false,
+            message: ''
         };
         this.handlePageClick = this.handlePageClick.bind(this);
     }
@@ -34,6 +36,11 @@ export class Hotels extends Component {
 
             postData
           })
+
+          if (localStorage.getItem('username')) {
+            this.setState({message: 'Hello ' + localStorage.getItem('username')})
+          }
+
         });
         
       }
@@ -66,7 +73,7 @@ export class Hotels extends Component {
     render() {
         return (
           <div className="row">
-            <h4>Hello {localStorage.getItem('username')}!</h4>
+            <h4>{this.state.message}</h4>
            {this.state.postData}
            <ReactPaginate
               previousLabel={"prev"}

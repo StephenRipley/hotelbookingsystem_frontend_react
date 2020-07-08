@@ -6,7 +6,8 @@ class Login extends Component {
        super(props);
         this.state={
             username:'',
-            password:''
+            password:'',
+            loggedIn: false
         };
         this.updateUsername = this.updateUsername.bind(this);
         this.updatePassword = this.updatePassword.bind(this);
@@ -29,39 +30,67 @@ class Login extends Component {
         })
         .then(response => {
                 this.props.history.push("/hotels");
-                console.log(response);
                 localStorage.setItem('username', response.data.username);
+                this.setState({loggedIn: true});
             })
             .catch(err => {
                 this.setState({errorMessage: err.message});
           })
         }
 
-render() {
-    return (
-        <div>
-            <h3>Login</h3>
-            { this.state.errorMessage &&
-            <p style={{color:'red'}} className="error">Login details incorrect, please try again </p> }
-        <form onSubmit={this.handleSubmit}>
-            <div>
-                <label>Username:
-                <input type="text" value={this.state.username} onChange={this.updateUsername} />
-                </label>
-            </div>
-            <div>
-                <label>Password:
-                <input type="password" value={this.state.password} onChange={this.updatePassword} />
-                </label>
-            </div>
-            <div>
-                <input type="submit" value="Submit"/>
-            </div>
-         </form>
-         </div>
-    )
+    clearUserDetails() {
+        localStorage.clear();
+        this.setState({username: '', password: ''})
     }
 
+        usernameLoggedIn = localStorage.getItem('username');
+
+render() {
+
+    if (this.state.loggedIn === true) {
+        return (
+            <div>
+                <h3>Login</h3>
+                { this.state.errorMessage &&
+                <p style={{color:'red'}} className="error">Login details incorrect, please try again </p> }
+            <form onSubmit={this.handleSubmit}>
+                <div>
+                    <label>Username:
+                    <input type="text" value={this.state.username} onChange={this.updateUsername} />
+                    </label>
+                </div>
+                <div>
+                    <label>Password:
+                    <input type="password" value={this.state.password} onChange={this.updatePassword} />
+                    </label>
+                </div>
+                <div>
+                    <input type="submit" value="Submit"/>
+                </div>
+             </form>
+             </div>
+        )
+
+    } else {
+        return (
+            <div>
+                <h3>Hello {this.usernameLoggedIn}!</h3>
+                <hr />
+                <div>
+                    <p>Your user details are:</p>
+                        <ul>
+                            <li>Username: {this.usernameLoggedIn}</li>
+                        </ul>
+                </div>
+                <div>
+                    <button class="btn" onClick={this.clearUserDetails}>Logout</button>
+                </div>
+            </div>
+            
+        )
+    }
+
+}
 }
 
 export default Login;
