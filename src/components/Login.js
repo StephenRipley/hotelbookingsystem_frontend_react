@@ -30,8 +30,12 @@ class Login extends Component {
         })
         .then(response => {
                 this.props.history.push("/hotels");
+                localStorage.setItem('firstName', response.data.firstName);
+                localStorage.setItem('lastName', response.data.lastName);
                 localStorage.setItem('username', response.data.username);
+                localStorage.setItem('address', response.data.address);
                 localStorage.setItem('loggedIn', true);
+                console.log(response);
             })
             .catch(err => {
                 this.setState({errorMessage: err.message});
@@ -39,9 +43,11 @@ class Login extends Component {
         }
 
     logout() {
-        localStorage.setItem('loggedIn', false);
+        localStorage.setItem('firstName', '');
+        localStorage.setItem('lastName', '');
         localStorage.setItem('username', '');
-        console.log(localStorage);
+        localStorage.setItem('address', '');
+        localStorage.setItem('loggedIn', false);
         window.location.reload(false);
     }
 
@@ -74,12 +80,15 @@ render() {
     } else {
         return (
             <div>
-                <h3>Hello {localStorage.getItem('username')}!</h3>
+                <h3>Account</h3>
                 <hr />
                 <div>
                     <p>Your user details are:</p>
                         <ul>
+                            <li>First name: {localStorage.getItem('firstName')}</li>
+                            <li>Last name: {localStorage.getItem('lastName')}</li>
                             <li>Username: {localStorage.getItem('username')}</li>
+                            <li>Address: {localStorage.getItem('address')}</li>
                         </ul>
                 </div>
                 <div>
