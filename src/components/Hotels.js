@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import HotelList from './HotelList';
-//import Error from './Error';
 
 export class Hotels extends Component {
 
@@ -27,8 +26,8 @@ export class Hotels extends Component {
 
           const hotels = response.data;
           const slice = hotels.slice(this.state.offset, this.state.offset + this.state.perPage)
-          const postData = slice.map((hotel) => <React.Fragment>
-            <HotelList key={hotel.hotelId} hotel={hotel} /></React.Fragment>)
+          const postData = slice.map((hotel) => <React.Fragment key={hotel.hotelId}>
+            <HotelList hotel={hotel} /></React.Fragment>)
 
           this.setState({
             pageCount: Math.ceil(hotels.length / this.state.perPage),
