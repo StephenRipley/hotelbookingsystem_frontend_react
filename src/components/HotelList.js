@@ -1,7 +1,10 @@
 import React from 'react';
 
-const HotelList = ({hotel}) => (
-  <div className="col s12">
+const HotelList = ({hotel}) => {
+
+  const url ="/hotels/hotel/" + hotel.hotelId;
+  return(
+    <div className="col s12">
     <div className="card">
       <div className="card-content">
         <p>{hotel.hotelName}</p>
@@ -13,10 +16,12 @@ const HotelList = ({hotel}) => (
         <p>Star rating: {hotel.starRating}</p>
       </div>
       <div className="card-action">
-        <a href={`http://localhost:8088/hotelbookingsystem/hotel/SeeHotelById/${hotel.hotelId}`}>Visit this lovely hotel</a>
+        <a href={url}>Visit this lovely hotel</a>
       </div>
     </div>
   </div>
-);
+  )
+  
+  };
 
 export default HotelList;

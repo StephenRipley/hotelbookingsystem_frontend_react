@@ -6,6 +6,8 @@ import {
 import Hotels from './Hotels';
 import Login from './Login';
 import NavBar from './NavBar';
+import axios from 'axios';
+import SingleHotel from './SingleHotel';
 
 class App extends Component {
   constructor(props) {
@@ -13,6 +15,13 @@ class App extends Component {
     this.state = {
       hotels: [],
     };
+
+    this.findHotelById = this.findHotelById.bind(this)
+  }
+
+  findHotelById(hotelId){
+    const url = "http://localhost:8088/hotelbookingsystem/hotel/SeeHotelById/" + hotelId
+    return axios.get(url)
   }
 
 
@@ -28,6 +37,10 @@ class App extends Component {
           <div className="col s8">
             <Route exact path="/" component={Login} />
             <Route exact path="/hotels" component={Hotels} />
+            <Route exact path="/hotels/hotel/:hotelId" render={(props) =>{
+                const hotel = this.findHotelById(props.match.params.hotelId)
+              return <SingleHotel hotel={hotel}/>
+            }}/>
           </div>
         </div>
         </Router>
