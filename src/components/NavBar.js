@@ -17,13 +17,13 @@ class NavBar extends Component {
             <nav>
                 <ul>
                     <li>
-                        {(localStorage.getItem('loggedIn') === 'false') ? (<Link to="/">Login</Link>) : (<Link to="/hotels" onClick={() => {this.logout()}}>Logout</Link>)}
+                        {(localStorage.getItem('loggedIn') === 'false') ? (<Link to="/"> Login </Link>) : (<Link to="/hotels" onClick={() => {this.logout()}}>Logout</Link>)}
                     </li>
                     <li>
-                        {(localStorage.getItem('loggedIn') === 'true') && (<Link to="/Account">Account</Link>)}
+                        {(localStorage.getItem('loggedIn') === 'true') && (<Link to="/Account"> Account </Link>)}
                     </li>
                     <li>
-                        <Link to="/hotels">Hotels</Link>
+                        <Link to="/hotels"> Hotels</Link>
                     </li>
                 </ul>
             </nav>

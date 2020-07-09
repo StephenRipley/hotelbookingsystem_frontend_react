@@ -39,17 +39,17 @@ afterEach(() => {
 describe('HotelList component', () => {
     describe('when provided with an empty array of hotels', () => {
         it('contains an empty <div> element', () => {
-            const hotelList = shallow(<HotelList hotel={mockHotel}/>);
+            const hotelList = shallow(<HotelList hotel={[]}/>);
             expect(hotelList).toContain(<div/>);
         })
         it('p elements have no value', () => {
-            const hotelList = shallow(<HotelList hotel={[mockHotel]}/>);
+            const hotelList = shallow(<HotelList hotel={mockHotel}/>);
             expect(hotelList.find('p')).toEqual({});
         })
     })
     describe('when provided with an array of hotels', () => {
         it('contains a matching number of <div> elements', () => {
-            const hotelList = shallow(<HotelList hotel={[mockHotel]}/>);
+            const hotelList = shallow(<HotelList hotel={mockHotel}/>);
             hotelList.update();
             expect(hotelList.find('div').length).toEqual(4);
         })
