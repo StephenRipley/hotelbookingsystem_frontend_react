@@ -10,6 +10,7 @@ class NavBar extends Component {
         localStorage.setItem('address', '');
         localStorage.setItem('loggedIn', false);
         window.location.reload(false)
+        
     }
 
     render() {
@@ -17,10 +18,13 @@ class NavBar extends Component {
             <nav>
                 <ul>
                     <li>
-                        {(localStorage.getItem('loggedIn') === 'false') ? (<Link to="/">Login</Link>) : (<Link to="/hotels" onClick={() => {this.logout()}}>Logout</Link>)}
+                    <Link to="/">Home</Link>
                     </li>
                     <li>
-                        {(localStorage.getItem('loggedIn') === 'true') && (<Link to="/Account">Account</Link>)}
+                        {(localStorage.getItem('loggedIn') === 'false') ? (<Link to="/login">Login</Link>) : (<Link to="/" onClick={() => {this.logout()}}>Logout</Link>)}
+                    </li>
+                    <li>
+                        {(localStorage.getItem('loggedIn') === 'true') && (<Link to="/account">Account</Link>)}
                     </li>
                     <li>
                         <Link to="/hotels">Hotels</Link>
