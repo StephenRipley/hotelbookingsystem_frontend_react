@@ -44,7 +44,7 @@ class Login extends Component {
 
 render() {
 
-    if (localStorage.getItem('loggedIn') === 'false') {
+   
         return (
             <div>
                 <h3>Login</h3>
@@ -71,6 +71,6 @@ render() {
     }
 
 }
-}
+
 
 export default Login;
