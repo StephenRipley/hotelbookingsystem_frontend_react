@@ -28,7 +28,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div className="nav-wrapper indigo lighten-4">
               <h1>Hotel Booking System</h1>
         </div>
