@@ -6,6 +6,16 @@ import HotelList from './HotelList';
 import Hotels from './Hotels';
 
 let container = null;
+const mockHotel = {
+    hotelId: 1,
+    hotelName: "Yotel",
+    numOfRooms: 5,
+    address: "123 Fake street",
+    postcode: "123 ABC",
+    city: "Edinburgh",
+    amenities: "none",
+    starRating: 5,
+};
 beforeEach(() => {
   // setup a DOM element as a render target
   container = document.createElement("div");
@@ -20,16 +30,6 @@ afterEach(() => {
   });
 
   it("renders with a mock hotel", () => {
-    const mockHotel = {
-                            hotelId: 1,
-                            hotelName: "Yotel",
-                            numOfRooms: 5,
-                            address: "123 Fake street",
-                            postcode: "123 ABC",
-                            city: "Edinburgh",
-                            amenities: "none",
-                            starRating: 5,
-                    };
     act(() => {
       render(<HotelList hotel={mockHotel}/>, container);
     });
@@ -39,17 +39,17 @@ afterEach(() => {
 describe('HotelList component', () => {
     describe('when provided with an empty array of hotels', () => {
         it('contains an empty <div> element', () => {
-            const hotelList = shallow(<HotelList hotel={[]}/>);
-            expect(hotelList).toContainReact(<div/>);
+            const hotelList = shallow(<HotelList hotel={mockHotel}/>);
+            expect(hotelList).toContain(<div/>);
         })
         it('p elements have no value', () => {
-            const hotelList = shallow(<HotelList hotel={[]}/>);
+            const hotelList = shallow(<HotelList hotel={[mockHotel]}/>);
             expect(hotelList.find('p')).toEqual({});
         })
     })
     describe('when provided with an array of hotels', () => {
         it('contains a matching number of <div> elements', () => {
-            const hotelList = shallow(<HotelList />);
+            const hotelList = shallow(<HotelList hotel={[mockHotel]}/>);
             hotelList.update();
             expect(hotelList.find('div').length).toEqual(4);
         })
