@@ -40,7 +40,7 @@ describe('HotelList component', () => {
     describe('when provided with an empty array of hotels', () => {
         it('contains an empty <div> element', () => {
             const hotelList = shallow(<HotelList hotel={mockHotel}/>);
-            expect(hotelList).toContain(<div/>);
+            expect(hotelList).toContainReact;
         })
         it('p elements have no value', () => {
             const hotelList = shallow(<HotelList hotel={[mockHotel]}/>);
