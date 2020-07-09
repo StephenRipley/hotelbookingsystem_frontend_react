@@ -1,24 +1,56 @@
 import React from 'react';
+import { render, unmountComponentAtNode } from "react-dom";
+import { act } from "react-dom/test-utils";
 import { shallow } from 'enzyme';
 import HotelList from './HotelList';
 import Hotels from './Hotels';
 
+let container = null;
+beforeEach(() => {
+  // setup a DOM element as a render target
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
+
+afterEach(() => {
+    // cleanup on exiting
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
+  });
+
+  it("renders with a mock hotel", () => {
+    const mockHotel = {
+                            hotelId: 1,
+                            hotelName: "Yotel",
+                            numOfRooms: 5,
+                            address: "123 Fake street",
+                            postcode: "123 ABC",
+                            city: "Edinburgh",
+                            amenities: "none",
+                            starRating: 5,
+                    };
+    act(() => {
+      render(<HotelList hotel={mockHotel}/>, container);
+    });
+    expect(container.textContent).toBe("Yotel Edinburgh 123 Fake street 123 ABC Rooms: 5 Amenities: none Star rating: 5 Visit this lovely hotel");
+  });
 
 describe('HotelList component', () => {
     describe('when provided with an empty array of hotels', () => {
         it('contains an empty <div> element', () => {
-            const hotelList = shallow(<HotelList hotels={[]}/>);
+            const hotelList = shallow(<HotelList hotel={[]}/>);
             expect(hotelList).toContainReact(<div/>);
         })
-        it('does not contain any <p> elements', () => {
-            const hotelList = shallow(<HotelList hotels={[]}/>);
-            expect(hotelList.find('p').length).toEqual(0);
+        it('p elements have no value', () => {
+            const hotelList = shallow(<HotelList hotel={[]}/>);
+            expect(hotelList.find('p')).toEqual({});
         })
     })
     describe('when provided with an array of hotels', () => {
         it('contains a matching number of <div> elements', () => {
-            const hotel = ['Yotel, Edinburgh, some street, EH71 7FA'];
-            const hotelList = shallow(<HotelList hotel={hotel}/>);
+            const hotelList = shallow(<HotelList />);
+            hotelList.update();
             expect(hotelList.find('div').length).toEqual(4);
         })
     })

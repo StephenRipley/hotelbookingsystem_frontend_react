@@ -2,14 +2,20 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import axios from 'axios';
 //import axiosMock from '../components/__mocks__/axios-mock';
-import  Hotels, { recievedData }  from './Hotels';
+import  Hotels, { recievedData, handlePageClick }  from './Hotels';
 import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-test('that setState is called on handleClick event', () => {
+it('should work', () => {
     const wrapper = shallow(<Hotels />);
-    const spy = jest.spyOn(wrapper.instance(), "setState");
+    const spy = jest.spyOn(wrapper.instance(), "recievedData");
+    expect(spy.mock.instances.value).toEqual("localhost")
+});
+
+it('that recievedData is called on handleClick event', () => {
+    const wrapper = shallow(<Hotels />);
+    const spy = jest.spyOn(wrapper.instance(), "recievedData");
     const mockEvent = {
         target: {
             name: "perPage",
@@ -20,37 +26,11 @@ test('that setState is called on handleClick event', () => {
     wrapper.instance().handlePageClick(mockEvent);
 
     expect(spy).toHaveBeenCalled();
+    expect(spy.mock.calls.length).toBe(1);
+    expect(spy.mock.calls.toString()).toBe('localhost');
+    
+    expect(spy.mock.results).toEqual([{"type": "return", "value": undefined}]);
 });
-
-// test('returns hotel list', () => {
-//     const hotelsInstance = shallow(<Hotels />);
-//     return hotelsInstance.recievedData().then(data => {
-//         expect(data).toBe('list of hotels');
-//     });
-// });
-
-//   it('should fetch a list of hotels', () => {
-//     jest.mock('axios');
-//     const getSpy = jest.spyOn(axios, 'get');
-//     const hotelsInstance = shallow(
-//       <Hotels/>
-//     );
-//     expect(getSpy).toBeCalled();
-//     expect(getSpy.mock.calls.length).toBe(1);
-//     expect(getSpy.mock.results[0].value).toBe('a list of hotels');
-//   });
-
-
-// test('should fetch hotels', async () => {
-//     jest.mock('axios');
-//     const wrapper = shallow(<Hotels />);
-//     const hotels = [{name: 'Bob'}];
-//     const resp = {data: hotels};
-//     axios.default.get.mockImplementation(() => Promise.resolve(resp))
-//     //axios.get.mockResolvedValue(resp);
-//     wrapper.instance().recievedData().then(data => expect(data).toEqual(hotels));
-// });
-
 
 test('that Hotels component renders', () => {
     const wrapper = shallow(<Hotels />);

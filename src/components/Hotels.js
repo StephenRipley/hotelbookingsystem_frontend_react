@@ -16,6 +16,7 @@ export class Hotels extends Component {
             message: ''
         };
         this.handlePageClick = this.handlePageClick.bind(this);
+        this.recievedData = this.recievedData.bind(this);
     }
 
     recievedData() {
