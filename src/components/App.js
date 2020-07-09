@@ -8,6 +8,7 @@ import Login from './Login';
 import NavBar from './NavBar';
 import axios from 'axios';
 import SingleHotel from './SingleHotel';
+import Account from './Account';
 
 class App extends Component {
   constructor(props) {
@@ -39,8 +40,8 @@ class App extends Component {
             <Route exact path="/hotels" component={Hotels} />
             <Route exact path="/hotels/hotel/:hotelId" render={(props) =>{
                 const hotel = this.findHotelById(props.match.params.hotelId)
-              return <SingleHotel hotel={hotel}/>
-            }}/>
+              return <SingleHotel hotel={hotel}/>}}/>
+            <Route exact path="/account" component={Account} />
           </div>
         </div>
         </Router>

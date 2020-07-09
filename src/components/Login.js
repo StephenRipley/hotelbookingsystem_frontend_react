@@ -11,7 +11,6 @@ class Login extends Component {
         this.updateUsername = this.updateUsername.bind(this);
         this.updatePassword = this.updatePassword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.logout = this.logout.bind(this);
     }
 
     updateUsername(event) {
@@ -23,7 +22,7 @@ class Login extends Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
+       event.preventDefault();
         const url = `http://localhost:8088/hotelbookingsystem/login/LoginUser/${this.state.username}/${this.state.password}`;
 
         axios.post(url, {
@@ -42,15 +41,6 @@ class Login extends Component {
                 this.setState({errorMessage: err.message});
           })
         }
-
-    logout() {
-        localStorage.setItem('firstName', '');
-        localStorage.setItem('lastName', '');
-        localStorage.setItem('username', '');
-        localStorage.setItem('address', '');
-        localStorage.setItem('loggedIn', false);
-        window.location.reload(false);
-    }
 
 render() {
 
@@ -78,26 +68,6 @@ render() {
              </div>
         )
 
-    } else {
-        return (
-            <div>
-                <h3>Account</h3>
-                <hr />
-                <div>
-                    <p>Your user details are:</p>
-                        <ul>
-                            <li>First name: {localStorage.getItem('firstName')}</li>
-                            <li>Last name: {localStorage.getItem('lastName')}</li>
-                            <li>Username: {localStorage.getItem('username')}</li>
-                            <li>Address: {localStorage.getItem('address')}</li>
-                        </ul>
-                </div>
-                <div>
-                    <button className="btn" onClick={this.logout}>Logout</button>
-                </div>
-            </div>
-            
-        )
     }
 
 }

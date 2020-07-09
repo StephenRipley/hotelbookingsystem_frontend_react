@@ -1,21 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+class NavBar extends Component {
 
-const NavBar = () => (
-    <nav>
-        <ul>
-            <li>
-          
-            </li>
-            <li>
-                {(localStorage.getItem('loggedIn') === 'false') ? (<Link to="/">Login</Link>) : (<Link to="/">Account</Link>) }
-            </li>
-            <li>
-                <Link to="/hotels">Hotels</Link>
-            </li>
-        </ul>
-    </nav>
-);
+    logout() {
+        localStorage.setItem('firstName', '');
+        localStorage.setItem('lastName', '');
+        localStorage.setItem('username', '');
+        localStorage.setItem('address', '');
+        localStorage.setItem('loggedIn', false);
+        window.location.reload(false)
+    }
 
+    render() {
+        return (
+            <nav>
+                <ul>
+                    <li>
+                        {(localStorage.getItem('loggedIn') === 'false') ? (<Link to="/">Login</Link>) : (<Link to="/hotels" onClick={() => {this.logout()}}>Logout</Link>)}
+                    </li>
+                    <li>
+                        {(localStorage.getItem('loggedIn') === 'true') && (<Link to="/Account">Account</Link>)}
+                    </li>
+                    <li>
+                        <Link to="/hotels">Hotels</Link>
+                    </li>
+                </ul>
+            </nav>
+        )
+    }
+
+
+}
 export default NavBar;
