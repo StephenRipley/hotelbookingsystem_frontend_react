@@ -71,7 +71,7 @@ render() {
                     </label>
                 </div>
                 <div>
-                    <input type="submit" value="Submit"/>
+                    <input type="submit" value="Submit" className="btn"/>
                 </div>
              </form>
              </div>
