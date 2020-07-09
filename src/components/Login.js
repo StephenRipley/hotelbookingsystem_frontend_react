@@ -36,6 +36,7 @@ class Login extends Component {
                 localStorage.setItem('address', response.data.address);
                 localStorage.setItem('loggedIn', true);
                 console.log(response);
+                window.location.reload(false);
             })
             .catch(err => {
                 this.setState({errorMessage: err.message});

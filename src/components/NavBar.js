@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 const NavBar = () => (
     <nav>
         <ul>
             <li>
-                <Link to="/">Login</Link>
+          
+            </li>
+            <li>
+                {(localStorage.getItem('loggedIn') === 'false') ? (<Link to="/">Login</Link>) : (<Link to="/">Account</Link>) }
             </li>
             <li>
                 <Link to="/hotels">Hotels</Link>
