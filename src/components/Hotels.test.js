@@ -1,7 +1,6 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import axios from 'axios';
-//import axiosMock from '../components/__mocks__/axios-mock';
 import  Hotels, { recievedData, handlePageClick }  from './Hotels';
 import Adapter from 'enzyme-adapter-react-16';
 
