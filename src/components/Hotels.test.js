@@ -7,12 +7,6 @@ import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-it('should work', () => {
-    const wrapper = shallow(<Hotels />);
-    const spy = jest.spyOn(wrapper.instance(), "recievedData");
-    expect(spy.mock.instances.value).toEqual("localhost")
-});
-
 it('that recievedData is called on handleClick event', () => {
     const wrapper = shallow(<Hotels />);
     const spy = jest.spyOn(wrapper.instance(), "recievedData");
@@ -27,8 +21,6 @@ it('that recievedData is called on handleClick event', () => {
 
     expect(spy).toHaveBeenCalled();
     expect(spy.mock.calls.length).toBe(1);
-    expect(spy.mock.calls.toString()).toBe('localhost');
-    
     expect(spy.mock.results).toEqual([{"type": "return", "value": undefined}]);
 });
 

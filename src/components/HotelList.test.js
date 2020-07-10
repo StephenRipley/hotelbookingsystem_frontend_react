@@ -16,6 +16,16 @@ const mockHotel = {
     amenities: "none",
     starRating: 5,
 };
+const mockHotel = {
+  hotelId: 1,
+  hotelName: "Yotel",
+  numOfRooms: 5,
+  address: "123 Fake street",
+  postcode: "123 ABC",
+  city: "Edinburgh",
+  amenities: "none",
+  starRating: 5,
+};
 beforeEach(() => {
   // setup a DOM element as a render target
   container = document.createElement("div");
@@ -39,8 +49,8 @@ afterEach(() => {
 describe('HotelList component', () => {
     describe('when provided with an empty array of hotels', () => {
         it('contains an empty <div> element', () => {
-            const hotelList = shallow(<HotelList hotel={[]}/>);
-            expect(hotelList).toContain(<div/>);
+          render(<HotelList hotel={}/>, container);
+            expect(container.textContent).toBe("    Rooms:  Amenities:  Star rating:  Visit this lovely hotel");
         })
         it('p elements have no value', () => {
             const hotelList = shallow(<HotelList hotel={mockHotel}/>);
